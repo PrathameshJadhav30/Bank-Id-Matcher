@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction ID Matcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 40px;
+            border-top: 5px solid #3498db;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #34495e;
+            font-size: 1rem;
+        }
+
+        input[type="file"],
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #d1d8e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="file"] {
+            color: #7d9c99;
+        }
+
+        input[type="file"]:focus,
+        input[type="text"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.02);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .message {
+            color: #27ae60;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .message.error {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <form action="/match" method="POST" enctype="multipart/form-data">
+        <h1>Transaction ID Matcher</h1>
+
+        <label for="file1">Upload First Excel File:</label>
+        <input type="file" name="file1" accept=".xlsx" required>
+
+        <label for="file2">Upload Second Excel File:</label>
+        <input type="file" name="file2" accept=".xlsx" required>
+
+        <label for="column">Column to Match:</label>
+        <input type="text" name="column" placeholder="Enter common column name" required>
+
+        <button type="submit">Match Data</button>
+
+        <!-- Display messages -->
+        <div class="message">
+            {% if message %}
+                {{ message }}
+            {% endif %}
+        </div>
+    </form>
+
+    <footer class="footer">
+        &copy; 2024 Prathamesh Jadhav. All rights reserved.
+    </footer>
+</body>
+</html>
