@@ -65,4 +65,4 @@ def match_data():
         return render_template('index.html', message=f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    app.run(debug=False,host='0.0.0.0')
+    app.run(debug=True)
